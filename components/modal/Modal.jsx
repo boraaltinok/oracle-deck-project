@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 function Modal({ handleSent, setRecieverMail }) {
   const [modal, setModal] = useState(false);
   const [checked, setChecked] = React.useState(false);
+  const [isHuman, setIsHuman] = useState(false);
   const toggleModal = () => {
     setModal(!modal);
   };
 
   const handleChange = () => {
     setChecked(!checked);
+  };
+
+  const handleCaptchaChange = (value) => {
+    console.log("Captcha value = ", value);
+    setIsHuman(true);
   };
 
   return (
@@ -53,8 +60,12 @@ function Modal({ handleSent, setRecieverMail }) {
                   />
                   I agree to the Privacy Policy
                 </label>
+                <ReCAPTCHA
+                  sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                  onChange={handleCaptchaChange}
+                />
 
-                <button type="submit" className="btn-modal">
+                <button type="submit" className="btn-modal" disabled={!isHuman}>
                   Send the cards
                 </button>
               </form>
