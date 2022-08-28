@@ -68,7 +68,7 @@ function Home({ products, bannerData, oracleCarts }) {
     //e.preventDefault();
     let config = {
       method: "post",
-      url: "http://localhost:3000/api/contact",
+      url: "https://oracle-deck-project2.vercel.app/api/contact",
       headers: {
         "Content-Type": "application/json",
       },
