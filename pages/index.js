@@ -68,7 +68,7 @@ function Home({ products, bannerData, oracleCarts }) {
     //e.preventDefault();
     let config = {
       method: "post",
-      url: "https://oracle-deck-project.vercel.app/api/contact",
+      url: "https://oracle-deck-personal.vercel.app/api/contact",
       headers: {
         "Content-Type": "application/json",
       },
@@ -108,7 +108,12 @@ function Home({ products, bannerData, oracleCarts }) {
       {/*{console.log("image", bannerData[0].image)}*/}
       <div>
         <div className="products-heading">
-          <h2>HOW MANY CARDS WOULD YOU LIKE?</h2>
+          <h2>
+            Think about the question you have right now, what would you like
+            clarity on? Decide on the numbers of cards you wish to receive. If
+            you wish to save your reading, you may email it to yourself. This
+            site is for entertainment purposes only.
+          </h2>
           {showStep2 === false ? (
             <div className="buttons">
               <button

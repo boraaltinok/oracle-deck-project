@@ -28,13 +28,8 @@ function Modal({ handleSent, setRecieverMail }) {
             <div className="modal-content">
               <h2>Mail Form</h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Soluta, reiciendis hic quidem iusto earum doloremque ducimus,
-                sit, quaerat magnam aperiam esse labore magni impedit animi
-                cumque adipisci dolorem deserunt voluptatum asperiores
-                dignissimos. Necessitatibus, voluptatibus illo. Et voluptates
-                excepturi libero harum modi, architecto ipsam nesciunt
-                perspiciatis, asperiores consequatur illum laudantium dolor?
+                Your Card reading is one step closer to being saved in your
+                inbox!
               </p>
               <form
                 onSubmit={() => {
@@ -44,7 +39,15 @@ function Modal({ handleSent, setRecieverMail }) {
                   }
                 }}
               >
-                <div className="t">
+                <div
+                  className="t"
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    marginTop: 20,
+                    marginBottom: 5,
+                  }}
+                >
                   <input
                     type="email"
                     onChange={(e) => setRecieverMail(e.target.value)}
@@ -52,7 +55,13 @@ function Modal({ handleSent, setRecieverMail }) {
                     autoFocus
                   ></input>
                 </div>
-                <label>
+                <label
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    marginTop: 0,
+                  }}
+                >
                   <input
                     type="checkbox"
                     checked={checked}
@@ -60,12 +69,27 @@ function Modal({ handleSent, setRecieverMail }) {
                   />
                   I agree to the Privacy Policy
                 </label>
+
                 <ReCAPTCHA
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    marginTop: 20,
+                  }}
                   sitekey="6Le3t7UhAAAAAPnMj1PLDagY08wZKC14HF3M67Ha"
                   onChange={handleCaptchaChange}
                 />
 
-                <button type="submit" className="btn-modal" disabled={!isHuman}>
+                <button
+                  type="submit"
+                  className="btn-modal"
+                  disabled={!isHuman || !checked}
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    marginTop: 20,
+                  }}
+                >
                   Send the cards
                 </button>
               </form>
