@@ -61,7 +61,7 @@ function Modal({ handleSent, setRecieverMail }) {
                   I agree to the Privacy Policy
                 </label>
                 <ReCAPTCHA
-                  sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                  sitekey="6Le3t7UhAAAAAPnMj1PLDagY08wZKC14HF3M67Ha"
                   onChange={handleCaptchaChange}
                 />
 
