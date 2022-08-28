@@ -1,5 +1,7 @@
 import nodemailer from "nodemailer";
 import { urlFor } from "../../lib/client";
+import "../../styles/globals.css";
+
 /*
     {
       // use URL as an attachment
@@ -48,8 +50,60 @@ export default async (req, res) => {
       to: `${recieverMail}`,
       subject: "ORACLE DECK",
       html: `<html>
-      <p>TAKE A LOOK AT YOUR CART!</p>
-      <img src="https://cdn.sanity.io/images/2rxj09et/production/4a0baed7620c72439fd14bcbcaae89e325e209c3-1050x1725.png"></img></html>
+      <head>
+      <style>
+      .hello-text {
+        background-color: #f02d34;
+        color: aqua;
+      }
+      .grid-container {
+        display: grid;
+        grid-template-columns: 350px 100px;
+        grid-template-rows: minmax(500px, auto);
+      }
+      </style>
+      </head>
+
+      <body>
+   <p style="text-align:center; font-size:25px;"><strong>Oracle Card Message</strong></p>
+         <img src="${urlFor(
+           randomCards[0].image[0]
+         ).url()}" width="350" height="500" style="  display: block;
+         margin-left: auto;
+         margin-right: auto;"></img>
+      <p style="text-align:center; font-size:25px; color: #324d67;"><strong>${
+        randomCards[0].name
+      }:</strong></p>
+      <h3>${randomCards[0].details}</h3>
+   <img src="${
+     randomCards[1].image[0] !== undefined
+       ? urlFor(randomCards[1].image[0]).url()
+       : null
+   }" width="350" height="500" style="  display: block;
+   margin-left: auto;
+   margin-right: auto;"></img>
+   <p style="text-align:center; font-size:25px; color: #324d67;"><strong>${
+     randomCards[1].name
+   }:</strong></p>
+   <h3>${randomCards[1].details}</h3>
+   <img src="${
+     randomCards[2].image[0] !== undefined
+       ? urlFor(randomCards[2].image[0]).url()
+       : null
+   }" width="350" height="500" style="  display: block;
+   margin-left: auto;
+   margin-right: auto;"></img>
+   <p style="text-align:center; font-size:25px; color: #324d67;"><strong>${
+     randomCards[2].name
+   }:</strong></p>
+   <h3>${randomCards[2].details}</h3>
+   <p style="text-align:center; font-size:20px; color: #324d67;">Follow me on Facebook and Instagram @HHBHannah</p>
+   <h6 style="color: #324d67;">For more information on how to work with me privately you can visit
+      holistichealingbyhannah.com
+      Free discovery calls are available, if you have questions before booking an appointment.
+   </h6>
+</body>
+      </html>
       `,
       attachments: [...attachemnts],
     });

@@ -17,33 +17,6 @@ function Home({ products, bannerData, oracleCarts }) {
   const [showStep2, setShowStep2] = useState(false);
   const [cardNoSelected, setCardNoSelected] = useState(false);
 
-  /*const fillSelectedIndexes = (oracle_carts_length) => {
-    let tmp = 0;
-    let tmpIndexes = [];
-    let tmpCardArr = [];
-    console.log("selectedCardNumber", selectedCardNumber);
-    while (tmp < selectedCardNumber) {
-      let selected_index = createRandomNumberInRange(oracle_carts_length);
-      /*console.log("loop iterated");
-      console.log("selected_index", selected_index);
-      console.log(
-        "tmpIndexes.includes(selected_index) === false",
-        tmpIndexes.includes(selected_index) === false
-      );*/
-
-  /* if (tmpIndexes.includes(selected_index) === false) {
-        //console.log("inside if");
-        tmpCardArr.push(oracleCarts[selected_index]);
-        tmpIndexes.push(selected_index);
-        tmp++;
-        //console.log("selected_indexes = ", tmpIndexes);
-      }
-    }
-    setSelectedCardIndexes([...tmpIndexes]);
-
-    setRandomCards((prevState) => [...tmpCardArr]);
-  };*/
-
   useEffect(() => {
     let tmp = 0;
     let tmpIndexes = [];
@@ -95,7 +68,7 @@ function Home({ products, bannerData, oracleCarts }) {
     //e.preventDefault();
     let config = {
       method: "post",
-      url: "https://oracle-deck-project2.vercel.app/api/contact/",
+      url: "http://localhost:3000/api/contact",
       headers: {
         "Content-Type": "application/json",
       },
@@ -123,6 +96,10 @@ function Home({ products, bannerData, oracleCarts }) {
       setShowStep2(true);
     }
   }, [cardNoSelected]);
+
+  const handleReset = () => {
+    window.location.reload(false);
+  };
 
   return (
     <>
@@ -202,10 +179,15 @@ function Home({ products, bannerData, oracleCarts }) {
                     );
                   })}
                 </div>
-                <Modal
-                  handleSent={handleSent}
-                  setRecieverMail={setRecieverMail}
-                />
+                <div className="btn-container">
+                  <Modal
+                    handleSent={handleSent}
+                    setRecieverMail={setRecieverMail}
+                  />
+                  <button className="btn-modal" onClick={handleReset}>
+                    RESET
+                  </button>
+                </div>
               </div>
             </div>
           ) : null}

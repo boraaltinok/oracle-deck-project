@@ -928,3 +928,28 @@ body.active-modal {
 .close-modal:hover {
   transform: scale(1.1, 1.1);
 }
+
+.email-container {
+  margin: 150px auto;
+  width: 50%;
+  padding: 8px;
+}
+
+.email-card-image {
+  float: left;
+  width: 350px;
+  height: 500px;
+  padding: 0 10px 0 0;
+}
+
+.email-card-description {
+  display: inline-block;
+  font-family: verdana;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 350px 100px;
+  grid-template-rows: minmax(150px, auto);
+}
+

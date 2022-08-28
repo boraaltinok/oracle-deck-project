@@ -6,7 +6,9 @@ const Footer = () => {
     <div className="footer-container">
       <p>2022 Oracle Deck All rights reserved</p>
       <p className="icons">
-        <AiFillInstagram></AiFillInstagram>
+        <AiFillInstagram
+          onClick={() => (window.location = "http://youtube.com")}
+        ></AiFillInstagram>
         <AiOutlineTwitter />
       </p>
     </div>
