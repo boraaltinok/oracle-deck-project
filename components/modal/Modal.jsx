@@ -85,7 +85,7 @@ function Modal({ handleSent, setRecieverMail }) {
                 <button
                   type="submit"
                   className="btn-modal"
-                  disabled={/*!isHuman ||*/ !checked}
+                  disabled={!isHuman || !checked}
                   style={{
                     display: "flex",
                     justifyContent: "center",
