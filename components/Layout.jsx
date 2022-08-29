@@ -7,6 +7,8 @@ import { client } from "../lib/client";
 import axios from "axios";
 
 function Layout({ children, pageContent }) {
+  console.log("LAYOUT BUILD PAGE CONTENT = ", pageContent);
+
   return (
     <div className="layout">
       <Head>

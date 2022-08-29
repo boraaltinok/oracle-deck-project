@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { AiFillInstagram, AiOutlineTwitter } from "react-icons/ai";
 
 const Footer = ({ pageContent }) => {
+  const [loading, setLoading] = useState(true);
+  const [footerContent, setFooterContent] = useState({});
+
+  useEffect(() => {
+    setFooterContent(pageContent);
+  }, []);
+
+  useEffect(() => {
+    pageContent === undefined ? setLoading(true) : setLoading(false);
+  }, [footerContent]);
+  console.log("FOOTER BUILD PAGE CONTENT = ", pageContent);
   return (
     <div className="footer-container">
-      {pageContent === undefined ? (
+      {loading === false ? (
         <>
           <p>
             {pageContent.footer1 === undefined
