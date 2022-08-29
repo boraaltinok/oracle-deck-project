@@ -60,7 +60,7 @@ function Home({ products, bannerData, oracleCarts, pageContent }) {
   const handleSent = async (e) => {
     let config = {
       method: "post",
-      url: "http://localhost:3000/api/contact",
+      url: "https://oracle-deck-by-hannah-york.vercel.app/api/contact",
       headers: {
         "Content-Type": "application/json",
       },

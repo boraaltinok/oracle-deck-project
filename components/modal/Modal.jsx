@@ -78,7 +78,7 @@ function Modal({ handleSent, setRecieverMail }) {
                     justifyContent: "center",
                     marginTop: 20,
                   }}
-                  sitekey="6Le3t7UhAAAAAPnMj1PLDagY08wZKC14HF3M67Ha"
+                  sitekey="6LcVerohAAAAAISAbu6dSKkKr96WCYJc_VgvBNrB"
                   onChange={handleCaptchaChange}
                 />
 
