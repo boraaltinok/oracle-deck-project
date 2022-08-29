@@ -5,11 +5,12 @@ import OracleCart from "../components/OracleCart";
 import { client } from "../lib/client";
 import banner from "../sanity_ecommerce/schemas/banner";
 import oracleCart from "../sanity_ecommerce/schemas/oracle_cart";
+import pageContent from "../sanity_ecommerce/schemas/page_content";
 
 import axios from "axios";
 import Modal from "../components/modal/Modal";
 
-function Home({ products, bannerData, oracleCarts }) {
+function Home({ products, bannerData, oracleCarts, pageContent }) {
   const [recieverMail, setRecieverMail] = useState("");
   const [selectedCardNumber, setSelectedCardNumber] = useState(0);
   const [randomCards, setRandomCards] = useState([]);
@@ -21,6 +22,8 @@ function Home({ products, bannerData, oracleCarts }) {
     let tmp = 0;
     let tmpIndexes = [];
     let tmpCardArr = [];
+    console.log("PAGE CONTENT ", pageContent);
+
     console.log("selectedCardNumber", selectedCardNumber);
     while (tmp < selectedCardNumber) {
       let selected_index = createRandomNumberInRange(oracleCarts.length);
@@ -40,11 +43,8 @@ function Home({ products, bannerData, oracleCarts }) {
       }
     }
     setSelectedCardIndexes([...tmpIndexes]);
-    //console.log("selected_card-indexes = ", selectedCardIndexes);
 
     setRandomCards((prevState) => [...tmpCardArr]);
-    //console.log("random cARTs = ", randomCards);
-    //console.log("random selectedddd cartss", randomCards);
   }, [selectedCardNumber]);
 
   useEffect(
@@ -58,17 +58,9 @@ function Home({ products, bannerData, oracleCarts }) {
   };
 
   const handleSent = async (e) => {
-    //e.preventDefault();
-    //setImage(oracleCarts[0].image[0]);
-    //console.log("image = ", image);
-    //console.log("oracleCarts[0].image[0]", oracleCarts[0].image[0]);
-
-    //fillSelectedIndexes(oracleCarts.length);
-
-    //e.preventDefault();
     let config = {
       method: "post",
-      url: "https://oracle-deck-personal.vercel.app/api/contact",
+      url: "http://localhost:3000/api/contact",
       headers: {
         "Content-Type": "application/json",
       },
@@ -103,16 +95,15 @@ function Home({ products, bannerData, oracleCarts }) {
 
   return (
     <>
-      {/*{console.log("ORACLE CARDS = ", oracleCarts)}*/}
-      {/*<HeroBanner heroBanner={bannerData.length && bannerData[0]} />*/}
-      {/*{console.log("image", bannerData[0].image)}*/}
       <div>
         <div className="products-heading">
-          <h2>
-            Think about the question you have right now, what would you like
+          <h2 style={{ fontSize: 30 }}>
+            {pageContent.heading1 === undefined
+              ? `Think about the question you have right now, what would you like
             clarity on? Decide on the numbers of cards you wish to receive. If
             you wish to save your reading, you may email it to yourself. This
-            site is for entertainment purposes only.
+            site is for entertainment purposes only.`
+              : pageContent.heading1}
           </h2>
           {showStep2 === false ? (
             <div className="buttons">
@@ -121,7 +112,6 @@ function Home({ products, bannerData, oracleCarts }) {
                 onClick={() => {
                   setSelectedCardNumber(1);
                   setCardNoSelected(true);
-                  //fillSelectedIndexes(oracleCarts.length);
                 }}
               >
                 1 Card
@@ -131,7 +121,6 @@ function Home({ products, bannerData, oracleCarts }) {
                 onClick={() => {
                   setSelectedCardNumber(2);
                   setCardNoSelected(true);
-                  //fillSelectedIndexes(oracleCarts.length);
                 }}
               >
                 2 Cards
@@ -141,7 +130,6 @@ function Home({ products, bannerData, oracleCarts }) {
                 onClick={() => {
                   setSelectedCardNumber(3);
                   setCardNoSelected(true);
-                  //fillSelectedIndexes(oracleCarts.length);
                 }}
               >
                 3 Cards
@@ -151,23 +139,7 @@ function Home({ products, bannerData, oracleCarts }) {
 
           {showStep2 === true ? (
             <div>
-              {/*<h2>STEP 2:ENTER YOUR EMAIL TO RECIEVE YOUR CARDS</h2>
-              <form onSubmit={handleSent}>
-                <div className="t">
-                  <input
-                    type="text"
-                    onChange={(e) => setRecieverMail(e.target.value)}
-                  ></input>
-                </div>
-
-                <button type="submit" className="">
-                  Send the cards
-                </button>
-          </form>*/}
-              <div className="options">
-                {/*<button>Mail me the Images</button>
-                <button>Mail me the Images</button>*/}
-              </div>
+              <div className="options"></div>
               <div className="products-container">
                 <h1>REVEALED CARDS:</h1>
 
@@ -199,8 +171,16 @@ function Home({ products, bannerData, oracleCarts }) {
         </div>
       </div>
       <div className="products-heading">
-        <h2>Overview of the Deck</h2>
-        <p>Let the journey begin...</p>
+        <h2 style={{ fontSize: 30 }}>
+          {pageContent.heading2 === undefined
+            ? `Overview of the Deck`
+            : pageContent.heading2}
+        </h2>
+        <p>
+          {pageContent.heading2 === undefined
+            ? `Let the journey begin`
+            : pageContent.heading3}
+        </p>
       </div>
       <div className="maylike-products-wrapper">
         <div className="marquee">
@@ -238,8 +218,11 @@ export const getServerSideProps = async () => {
   const oracleCartsQuery = '*[_type == "oraclecart"]';
   const oracleCarts = await client.fetch(oracleCartsQuery);
 
+  const pageContentQuery = '*[_type == "pagecontent"][0]';
+  const pageContent = await client.fetch(pageContentQuery);
+
   return {
-    props: { products, bannerData, oracleCarts },
+    props: { products, bannerData, oracleCarts, pageContent },
   };
 };
 

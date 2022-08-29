@@ -67,7 +67,9 @@ function Modal({ handleSent, setRecieverMail }) {
                     checked={checked}
                     onChange={handleChange}
                   />
-                  I agree to the Privacy Policy
+                  <a href="https://holistichealingbyhannah.com/terms-and-conditions">
+                    <u>I agree to the Terms and Conditions</u>
+                  </a>
                 </label>
 
                 <ReCAPTCHA
@@ -83,7 +85,7 @@ function Modal({ handleSent, setRecieverMail }) {
                 <button
                   type="submit"
                   className="btn-modal"
-                  disabled={!isHuman || !checked}
+                  disabled={/*!isHuman ||*/ !checked}
                   style={{
                     display: "flex",
                     justifyContent: "center",

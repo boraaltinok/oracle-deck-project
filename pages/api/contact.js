@@ -40,7 +40,7 @@ export default async (req, res) => {
     secure: true,
     auth: {
       user: "boraaltinok26@gmail.com",
-      pass: "mkfazbjnpsdqomss",
+      pass: `${process.env.EMAIL_APP_SECRET}`,
     },
   });
 
@@ -75,28 +75,38 @@ export default async (req, res) => {
         randomCards[0].name
       }:</strong></p>
       <h3>${randomCards[0].details}</h3>
-   <img src="${
-     randomCards[1].image[0] !== undefined
-       ? urlFor(randomCards[1].image[0]).url()
-       : null
-   }" width="350" height="500" style="  display: block;
-   margin-left: auto;
-   margin-right: auto;"></img>
-   <p style="text-align:center; font-size:25px; color: #324d67;"><strong>${
-     randomCards[1].name
-   }:</strong></p>
-   <h3>${randomCards[1].details}</h3>
-   <img src="${
-     randomCards[2].image[0] !== undefined
-       ? urlFor(randomCards[2].image[0]).url()
-       : null
-   }" width="350" height="500" style="  display: block;
-   margin-left: auto;
-   margin-right: auto;"></img>
-   <p style="text-align:center; font-size:25px; color: #324d67;"><strong>${
-     randomCards[2].name
-   }:</strong></p>
-   <h3>${randomCards[2].details}</h3>
+      ${
+        randomCards.length > 1
+          ? `<img src="${
+              randomCards[1].image[0] !== undefined
+                ? urlFor(randomCards[1].image[0]).url()
+                : null
+            }" width="350" height="500" style="  display: block;
+      margin-left: auto;
+      margin-right: auto;"></img>
+      <p style="text-align:center; font-size:25px; color: #324d67;"><strong>${
+        randomCards[1].name
+      }:</strong></p>
+      <h3>${randomCards[1].details}</h3>`
+          : ``
+      }
+      ${
+        randomCards.length > 2
+          ? `<img src="${
+              randomCards[2].image[0] !== undefined
+                ? urlFor(randomCards[2].image[0]).url()
+                : null
+            }" width="350" height="500" style="  display: block;
+          margin-left: auto;
+          margin-right: auto;"></img>
+          <p style="text-align:center; font-size:25px; color: #324d67;"><strong>${
+            randomCards[2].name
+          }:</strong></p>
+          <h3>${randomCards[2].details}</h3>`
+          : ``
+      }
+   
+
    <p style="text-align:center; font-size:20px; color: #324d67;">Follow me on Facebook and Instagram @HHBHannah</p>
    <h6 style="color: #324d67;">For more information on how to work with me privately you can visit
       holistichealingbyhannah.com
@@ -105,7 +115,7 @@ export default async (req, res) => {
 </body>
       </html>
       `,
-      attachments: [...attachemnts],
+      /*attachments: [...attachemnts],*/
     });
 
     console.log("message sent", email.messageId);
