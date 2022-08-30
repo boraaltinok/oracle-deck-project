@@ -39,14 +39,14 @@ export default async (req, res) => {
     port: 465,
     secure: true,
     auth: {
-      user: "boraaltinok26@gmail.com",
-      pass: `${process.env.EMAIL_APP_SECRET}`,
+      user: "holistichealingbyhannah@gmail.com",
+      pass: `${process.env.EMAIL_HANNAH_SECRET}`,
     },
   });
 
   try {
     const email = await transporter.sendMail({
-      from: "boraaltinok26@gmail.com",
+      from: "holistichealingbyhannah@gmail.com",
       to: `${recieverMail}`,
       subject: "ORACLE DECK",
       html: `<html>
