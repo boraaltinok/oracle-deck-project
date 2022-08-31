@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Product, FooterBanner, HeroBanner } from "../components";
-import MailForm from "../components/MailForm";
 import OracleCart from "../components/OracleCart";
 import { client } from "../lib/client";
 import banner from "../sanity_ecommerce/schemas/banner";
 import oracleCart from "../sanity_ecommerce/schemas/oracle_cart";
-import pageContent from "../sanity_ecommerce/schemas/page_content";
 
 import axios from "axios";
 import Modal from "../components/modal/Modal";
@@ -22,35 +20,22 @@ function Home({ products, bannerData, oracleCarts, pageContent }) {
     let tmp = 0;
     let tmpIndexes = [];
     let tmpCardArr = [];
-    console.log("PAGE CONTENT ", pageContent);
+    //console.log("PAGE CONTENT ", pageContent);
 
-    console.log("selectedCardNumber", selectedCardNumber);
+    //console.log("selectedCardNumber", selectedCardNumber);
     while (tmp < selectedCardNumber) {
       let selected_index = createRandomNumberInRange(oracleCarts.length);
-      console.log("loop iterated");
-      console.log("selected_index", selected_index);
-      console.log(
-        "tmpIndexes.includes(selected_index) === false",
-        tmpIndexes.includes(selected_index) === false
-      );
 
       if (tmpIndexes.includes(selected_index) === false) {
-        console.log("inside if");
         tmpCardArr.push(oracleCarts[selected_index]);
         tmpIndexes.push(selected_index);
         tmp++;
-        console.log("selected_indexes = ", tmpIndexes);
       }
     }
     setSelectedCardIndexes([...tmpIndexes]);
 
     setRandomCards((prevState) => [...tmpCardArr]);
   }, [selectedCardNumber]);
-
-  useEffect(
-    () => console.log("use effect selected card indexes ", selectedCardIndexes),
-    [selectedCardIndexes]
-  );
 
   const createRandomNumberInRange = (array_size) => {
     // 👇️ get number between min (inclusive) and max (inclusive)
@@ -116,7 +101,7 @@ function Home({ products, bannerData, oracleCarts, pageContent }) {
               >
                 1 Card
               </button>
-              <button
+              <buttonImage
                 className="add-to-cart"
                 onClick={() => {
                   setSelectedCardNumber(2);
@@ -124,7 +109,7 @@ function Home({ products, bannerData, oracleCarts, pageContent }) {
                 }}
               >
                 2 Cards
-              </button>
+              </buttonImage>
               <button
                 className="add-to-cart"
                 onClick={() => {
