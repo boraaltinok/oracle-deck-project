@@ -9,8 +9,18 @@ export default {
       type: "string",
     },
     {
+      name: "heading1_darkGray",
+      title: "Heading1 Dark Gray",
+      type: "string",
+    },
+    {
       name: "heading2",
       title: "Heading2",
+      type: "string",
+    },
+    {
+      name: "heading2_darkGray",
+      title: "Heading2 Dark Gray",
       type: "string",
     },
     {

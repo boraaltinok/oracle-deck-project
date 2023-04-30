@@ -93,12 +93,12 @@ function Home({ products, bannerData, oracleCarts, pageContent }) {
           <div style={{ margin: "25px" }}></div>
 
           <h2 style={{ fontSize: 20, color: "#6d7075" }}>
-            {pageContent.heading1 === undefined
+            {pageContent.heading1_darkGray === undefined
               ? `Think about the question you have right now, what would you like
             clarity on? Decide on the numbers of cards you wish to receive. If
             you wish to save your reading, you may email it to yourself. This
             site is for entertainment purposes only.`
-              : pageContent.heading1}
+              : pageContent.heading1_darkGray}
           </h2>
           {showStep2 === false ? (
             <div className="buttons">
@@ -173,9 +173,9 @@ function Home({ products, bannerData, oracleCarts, pageContent }) {
         </h2>
         <div style={{ margin: "25px" }}></div>
         <h2 style={{ fontSize: 20, color: "#6d7075" }}>
-          {pageContent.heading2 === undefined
+          {pageContent.heading2_darkGray === undefined
             ? `Overview of the Deck`
-            : pageContent.heading2}
+            : pageContent.heading2_darkGray}
         </h2>
         <div style={{ margin: "60px" }}></div>
 
