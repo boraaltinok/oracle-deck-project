@@ -82,7 +82,17 @@ function Home({ products, bannerData, oracleCarts, pageContent }) {
     <>
       <div>
         <div className="products-heading">
-          <h2 style={{ fontSize: 30 }}>
+          <h2 style={{ fontSize: 20 }}>
+            {pageContent.heading1 === undefined
+              ? `Think about the question you have right now, what would you like
+            clarity on? Decide on the numbers of cards you wish to receive. If
+            you wish to save your reading, you may email it to yourself. This
+            site is for entertainment purposes only.`
+              : pageContent.heading1}
+          </h2>
+          <div style={{ margin: "25px" }}></div>
+
+          <h2 style={{ fontSize: 20, color: "#6d7075" }}>
             {pageContent.heading1 === undefined
               ? `Think about the question you have right now, what would you like
             clarity on? Decide on the numbers of cards you wish to receive. If
@@ -156,11 +166,19 @@ function Home({ products, bannerData, oracleCarts, pageContent }) {
         </div>
       </div>
       <div className="products-heading">
-        <h2 style={{ fontSize: 30 }}>
+        <h2 style={{ fontSize: 20 }}>
           {pageContent.heading2 === undefined
             ? `Overview of the Deck`
             : pageContent.heading2}
         </h2>
+        <div style={{ margin: "25px" }}></div>
+        <h2 style={{ fontSize: 20, color: "#6d7075" }}>
+          {pageContent.heading2 === undefined
+            ? `Overview of the Deck`
+            : pageContent.heading2}
+        </h2>
+        <div style={{ margin: "60px" }}></div>
+
         <p>
           {pageContent.heading2 === undefined
             ? `Let the journey begin`

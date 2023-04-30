@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }) {
   console.log("APP:JS PAGECOTNENT = ", pageProps.pageContent);
 
   return (
-      <Layout pageContent={pageProps.pageContent}>
+      <Layout pageContent={pageProps.pageContent }>
         <Toaster></Toaster>
         <Component {...pageProps} />
       </Layout>

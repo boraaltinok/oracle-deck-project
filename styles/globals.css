@@ -8,7 +8,11 @@ body,
   box-sizing: border-box;
 }
 ::-webkit-scrollbar {
-  width: 0px;
+  width: 10px;
+}
+div::-webkit-scrollbar-thumb {
+  background-color: #324d67;
+  border-radius: 5px;
 }
 
 a {
@@ -23,6 +27,8 @@ a {
 }
 .layout {
   padding: 10px;
+  overflow-y: scroll;
+  height: 100vh;
 }
 
 .navbar-container {
@@ -952,4 +958,3 @@ body.active-modal {
   grid-template-columns: 350px 100px;
   grid-template-rows: minmax(150px, auto);
 }
-
