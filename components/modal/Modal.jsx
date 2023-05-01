@@ -68,7 +68,7 @@ function Modal({ handleSent, setRecieverMail }) {
                     onChange={handleChange}
                   />
                   <a href="https://holistichealingbyhannah.com/terms-and-conditions">
-                    <u>I agree to the Terms and Conditions</u>
+                    <u>I agree To the Terms and Conditions</u>
                   </a>
                 </label>
 
@@ -78,7 +78,7 @@ function Modal({ handleSent, setRecieverMail }) {
                     justifyContent: "center",
                     marginTop: 20,
                   }}
-                  sitekey="6LcVerohAAAAAISAbu6dSKkKr96WCYJc_VgvBNrB"
+                  sitekey="6LcRWc8lAAAAAJM-9hWldvyywiuF72QvKYo7AAoe"
                   onChange={handleCaptchaChange}
                 />
 
