@@ -43,7 +43,7 @@ function Home({ products, bannerData, oracleCartsDup1, pageDup1Content }) {
   const handleSent = async (e) => {
     let config = {
       method: "post",
-      url: `${process.env.NEXT_PUBLIC_SANITY_TOKEN_NEW}api/contact`,
+      url: `${process.env.BASE_URL}api/contact`,
       headers: {
         "Content-Type": "application/json",
       },
