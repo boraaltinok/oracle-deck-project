@@ -15,7 +15,7 @@ function Home({ products, bannerData, oracleCartsDup2, pageDup2Content }) {
   const [selectedCardIndexes, setSelectedCardIndexes] = useState([]);
   const [showStep2, setShowStep2] = useState(false);
   const [cardNoSelected, setCardNoSelected] = useState(false);
-
+  //comment
   useEffect(() => {
     let tmp = 0;
     let tmpIndexes = [];
