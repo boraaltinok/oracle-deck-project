@@ -8,7 +8,7 @@ import oracleCart from "../sanity_ecommerce/schemas/oracle_cart";
 import axios from "axios";
 import Modal from "../components/modal/Modal";
 
-function Home({ products, bannerData, oracleCartsDup1, pageDup1Content }) {
+function Home({ products, bannerData, oracleCartsDup2, pageDup2Content }) {
   const [recieverMail, setRecieverMail] = useState("");
   const [selectedCardNumber, setSelectedCardNumber] = useState(0);
   const [randomCards, setRandomCards] = useState([]);
@@ -24,10 +24,10 @@ function Home({ products, bannerData, oracleCartsDup1, pageDup1Content }) {
 
     //console.log("selectedCardNumber", selectedCardNumber);
     while (tmp < selectedCardNumber) {
-      let selected_index = createRandomNumberInRange(oracleCartsDup1.length);
+      let selected_index = createRandomNumberInRange(oracleCartsDup2.length);
 
       if (tmpIndexes.includes(selected_index) === false) {
-        tmpCardArr.push(oracleCartsDup1[selected_index]);
+        tmpCardArr.push(oracleCartsDup2[selected_index]);
         tmpIndexes.push(selected_index);
         tmp++;
       }
@@ -83,22 +83,22 @@ function Home({ products, bannerData, oracleCartsDup1, pageDup1Content }) {
       <div>
         <div className="products-heading">
           <h2 style={{ fontSize: 20 }}>
-            {pageDup1Content.heading1 === undefined
+            {pageDup2Content.heading1 === undefined
               ? `Think about the question you have right now, what would you like
             clarity on? Decide on the numbers of cards you wish to receive. If
             you wish to save your reading, you may email it to yourself. This
             site is for entertainment purposes only.`
-              : pageDup1Content.heading1}
+              : pageDup2Content.heading1}
           </h2>
           <div style={{ margin: "25px" }}></div>
 
           <h2 style={{ fontSize: 20, color: "#6d7075" }}>
-            {pageDup1Content.heading1_darkGray === undefined
+            {pageDup2Content.heading1_darkGray === undefined
               ? `Think about the question you have right now, what would you like
             clarity on? Decide on the numbers of cards you wish to receive. If
             you wish to save your reading, you may email it to yourself. This
             site is for entertainment purposes only.`
-              : pageDup1Content.heading1_darkGray}
+              : pageDup2Content.heading1_darkGray}
           </h2>
           {showStep2 === false ? (
             <div className="buttons">
@@ -167,22 +167,22 @@ function Home({ products, bannerData, oracleCartsDup1, pageDup1Content }) {
       </div>
       <div className="products-heading">
         <h2 style={{ fontSize: 20 }}>
-          {pageDup1Content.heading2 === undefined
+          {pageDup2Content.heading2 === undefined
             ? `Overview of the Deck`
-            : pageDup1Content.heading2}
+            : pageDup2Content.heading2}
         </h2>
         <div style={{ margin: "25px" }}></div>
         <h2 style={{ fontSize: 20, color: "#6d7075" }}>
-          {pageDup1Content.heading2_darkGray === undefined
+          {pageDup2Content.heading2_darkGray === undefined
             ? `Overview of the Deck`
-            : pageDup1Content.heading2_darkGray}
+            : pageDup2Content.heading2_darkGray}
         </h2>
         <div style={{ margin: "60px" }}></div>
 
         <p>
-          {pageDup1Content.heading2 === undefined
+          {pageDup2Content.heading2 === undefined
             ? `Let the journey begin`
-            : pageDup1Content.heading3}
+            : pageDup2Content.heading3}
         </p>
       </div>
       <div className="maylike-products-wrapper">
@@ -191,7 +191,7 @@ function Home({ products, bannerData, oracleCartsDup1, pageDup1Content }) {
             {/*{products?.map((product) => {
           return <Product key={product._id} product={product} />;
         })}*/}
-            {oracleCartsDup1?.map((oracleCart) => {
+            {oracleCartsDup2?.map((oracleCart) => {
               return oracleCart.isShowing === true ? (
                 <OracleCart
                   key={oracleCart._id}
