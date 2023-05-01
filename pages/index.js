@@ -8,7 +8,7 @@ import oracleCart from "../sanity_ecommerce/schemas/oracle_cart";
 import axios from "axios";
 import Modal from "../components/modal/Modal";
 
-function Home({ products, bannerData, oracleCarts, pageContent }) {
+function Home({ products, bannerData, oracleCartsDup1, pageDup1Content }) {
   const [recieverMail, setRecieverMail] = useState("");
   const [selectedCardNumber, setSelectedCardNumber] = useState(0);
   const [randomCards, setRandomCards] = useState([]);
@@ -24,10 +24,10 @@ function Home({ products, bannerData, oracleCarts, pageContent }) {
 
     //console.log("selectedCardNumber", selectedCardNumber);
     while (tmp < selectedCardNumber) {
-      let selected_index = createRandomNumberInRange(oracleCarts.length);
+      let selected_index = createRandomNumberInRange(oracleCartsDup1.length);
 
       if (tmpIndexes.includes(selected_index) === false) {
-        tmpCardArr.push(oracleCarts[selected_index]);
+        tmpCardArr.push(oracleCartsDup1[selected_index]);
         tmpIndexes.push(selected_index);
         tmp++;
       }
@@ -83,22 +83,22 @@ function Home({ products, bannerData, oracleCarts, pageContent }) {
       <div>
         <div className="products-heading">
           <h2 style={{ fontSize: 20 }}>
-            {pageContent.heading1 === undefined
+            {pageDup1Content.heading1 === undefined
               ? `Think about the question you have right now, what would you like
             clarity on? Decide on the numbers of cards you wish to receive. If
             you wish to save your reading, you may email it to yourself. This
             site is for entertainment purposes only.`
-              : pageContent.heading1}
+              : pageDup1Content.heading1}
           </h2>
           <div style={{ margin: "25px" }}></div>
 
           <h2 style={{ fontSize: 20, color: "#6d7075" }}>
-            {pageContent.heading1_darkGray === undefined
+            {pageDup1Content.heading1_darkGray === undefined
               ? `Think about the question you have right now, what would you like
             clarity on? Decide on the numbers of cards you wish to receive. If
             you wish to save your reading, you may email it to yourself. This
             site is for entertainment purposes only.`
-              : pageContent.heading1_darkGray}
+              : pageDup1Content.heading1_darkGray}
           </h2>
           {showStep2 === false ? (
             <div className="buttons">
@@ -167,22 +167,22 @@ function Home({ products, bannerData, oracleCarts, pageContent }) {
       </div>
       <div className="products-heading">
         <h2 style={{ fontSize: 20 }}>
-          {pageContent.heading2 === undefined
+          {pageDup1Content.heading2 === undefined
             ? `Overview of the Deck`
-            : pageContent.heading2}
+            : pageDup1Content.heading2}
         </h2>
         <div style={{ margin: "25px" }}></div>
         <h2 style={{ fontSize: 20, color: "#6d7075" }}>
-          {pageContent.heading2_darkGray === undefined
+          {pageDup1Content.heading2_darkGray === undefined
             ? `Overview of the Deck`
-            : pageContent.heading2_darkGray}
+            : pageDup1Content.heading2_darkGray}
         </h2>
         <div style={{ margin: "60px" }}></div>
 
         <p>
-          {pageContent.heading2 === undefined
+          {pageDup1Content.heading2 === undefined
             ? `Let the journey begin`
-            : pageContent.heading3}
+            : pageDup1Content.heading3}
         </p>
       </div>
       <div className="maylike-products-wrapper">
@@ -191,7 +191,7 @@ function Home({ products, bannerData, oracleCarts, pageContent }) {
             {/*{products?.map((product) => {
           return <Product key={product._id} product={product} />;
         })}*/}
-            {oracleCarts?.map((oracleCart) => {
+            {oracleCartsDup1?.map((oracleCart) => {
               return oracleCart.isShowing === true ? (
                 <OracleCart
                   key={oracleCart._id}
@@ -224,8 +224,29 @@ export const getServerSideProps = async () => {
   const pageContentQuery = '*[_type == "pagecontent"][0]';
   const pageContent = await client.fetch(pageContentQuery);
 
+  const pageContentDup1Query = '*[_type == "pagecontent_dup1"][0]';
+  const pageDup1Content = await client.fetch(pageContentDup1Query);
+
+  const pageContentDup2Query = '*[_type == "pagecontent_dup2"][0]';
+  const pageDup2Content = await client.fetch(pageContentDup2Query);
+
+  const oracleCartsDup1Query = '*[_type == "cart_dup1"]';
+  const oracleCartsDup1 = await client.fetch(oracleCartsDup1Query);
+
+  const oracleCartsDup2Query = '*[_type == "cart_dup2"]';
+  const oracleCartsDup2 = await client.fetch(oracleCartsDup2Query);
+
   return {
-    props: { products, bannerData, oracleCarts, pageContent },
+    props: {
+      products,
+      bannerData,
+      oracleCarts,
+      pageContent,
+      pageDup1Content,
+      pageDup2Content,
+      oracleCartsDup1,
+      oracleCartsDup2,
+    },
   };
 };
 
