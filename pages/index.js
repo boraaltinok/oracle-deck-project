@@ -20,9 +20,7 @@ function Home({ products, bannerData, oracleCartsDup1, pageDup1Content }) {
     let tmp = 0;
     let tmpIndexes = [];
     let tmpCardArr = [];
-    //console.log("PAGE CONTENT ", pageContent);
 
-    //console.log("selectedCardNumber", selectedCardNumber);
     while (tmp < selectedCardNumber) {
       let selected_index = createRandomNumberInRange(oracleCartsDup1.length);
 
