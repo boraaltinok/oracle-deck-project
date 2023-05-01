@@ -43,7 +43,7 @@ function Home({ products, bannerData, oracleCartsDup1, pageDup1Content }) {
   const handleSent = async (e) => {
     let config = {
       method: "post",
-      url: "https://oracle-deck-by-hannah-york.vercel.app/api/contact",
+      url: `${process.env.NEXT_PUBLIC_SANITY_TOKEN_NEW}api/contact`,
       headers: {
         "Content-Type": "application/json",
       },
