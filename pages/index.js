@@ -43,7 +43,7 @@ function Home({ products, bannerData, oracleCartsDup2, pageDup2Content }) {
   const handleSent = async (e) => {
     let config = {
       method: "post",
-      url: `${process.env.BASE_URL}api/contact`,
+      url: "https://oracle-deck-project-deck2.vercel.app/api/contact",
       headers: {
         "Content-Type": "application/json",
       },
